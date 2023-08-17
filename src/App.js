@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import Userform from './Userform'
 import './App.css';
+import Userdata from './Userdata';
+import Navbar from './Navbar';
+import { useState } from 'react';
 
 function App() {
+  const [allData, setAllData] = useState([]);
+
+  const clearAllData = () => {
+    setAllData([]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    < >
+      <Navbar />
+      <div className='app'>
+        <div className="app-container">
+          <Userform setAllData={setAllData} allData={allData} clearAllData={clearAllData} />
+          <Userdata data={allData} />
+        </div>
+      </div>
+    </>
+  )
 }
 
 export default App;
